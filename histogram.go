@@ -10,8 +10,9 @@ import (
 )
 
 type Histogram struct {
-	fileName  string
-	histogram []int
+	relatedness float64
+	fileName    string
+	histogram   []int
 	// README: don't we normalize the histograms?
 	// so the histogram should be an array of floats right ?
 }
@@ -21,14 +22,14 @@ func computeHistogram(imagePath string, depth int) (Histogram, error) {
 	// Open the JPEG file
 	file, err := os.Open(imagePath)
 	if err != nil {
-		return Histogram{"", nil}, err
+		return Histogram{0.0, "", nil}, err
 	}
 	defer file.Close()
 
 	// Decode the JPEG image
 	img, _, err := image.Decode(file)
 	if err != nil {
-		return Histogram{"", nil}, err
+		return Histogram{0.0, "", nil}, err
 	}
 
 	// Get the dimensions of the image
@@ -53,7 +54,7 @@ func computeHistogram(imagePath string, depth int) (Histogram, error) {
 		}
 	}
 
-	h := Histogram{imagePath, make([]int, depth)}
+	h := Histogram{0.0, imagePath, make([]int, depth)}
 	return h, nil
 }
 
