@@ -13,11 +13,37 @@ import (
 	"time"
 )
 
+
+
 type Histogram struct {
 	relatedness float64
 	fileName    string
 	histogram   []float64
 }
+
+
+
+func compareHistograms(h1 Histogram, h2 Histogram) float64 {
+
+	var sum float64 = 0
+
+	for i := 0; i < len(h1.histogram); i++ {
+
+		curr_h1_val := float64(h1.histogram[i])
+		curr_h2_val := float64(h2.histogram[i])
+
+		sum += math.Min(curr_h1_val, curr_h2_val)
+	}
+	return sum
+}
+
+
+
+//###########################################################\\
+//				    HISTOGRAM COMPUTATION
+//###########################################################\\
+
+
 
 // from the 'readImage.go' file on the brightspace
 func computeHistogram(imagePath string, depth int) (Histogram, error) {
@@ -73,19 +99,7 @@ func computeHistogram(imagePath string, depth int) (Histogram, error) {
 	return h, nil
 }
 
-func compareHistograms(h1 Histogram, h2 Histogram) float64 {
 
-	var sum float64 = 0
-
-	for i := 0; i < len(h1.histogram); i++ {
-
-		curr_h1_val := float64(h1.histogram[i])
-		curr_h2_val := float64(h2.histogram[i])
-
-		sum += math.Min(curr_h1_val, curr_h2_val)
-	}
-	return sum
-}
 
 func computeHistograms(imagePaths []string, depth int, hChan chan<- Histogram) {
 
@@ -112,6 +126,13 @@ func computeHistograms(imagePaths []string, depth int, hChan chan<- Histogram) {
 	}()
 }
 
+
+//###########################################################\\
+//						MAIN FUNCTION
+//###########################################################\\
+
+
+
 func main() {
 
 	os.Open("queryImages/q01.jpg")
@@ -125,10 +146,14 @@ func main() {
 		panic(err)
 	}
 
+	// Step 1: create histogram channel
 	k := 1
 	d := 3
+	histChan := make(chan Histogram)
+	var wg sync.WaitGroup
 	
 
+	// Step 2: get the list of all image filenames in the dir
 	var filenames []string
 	for _, file := range dataset {
 		if strings.HasSuffix(file.Name(), ".jpg") {
@@ -136,6 +161,7 @@ func main() {
 		}
 	}
 
+	// Step 3: split the list into k slices
 	sliceSize := len(filenames) / k
 	slices := make([][]string, k)
 	for i := 0; i < k; i++ {
@@ -147,44 +173,47 @@ func main() {
 		slices[i] = filenames[start:end]
 	}
 
-	var wg sync.WaitGroup
 	start := time.Now()
-	histChan := make(chan Histogram)
-
+	// Step 3½: send the slices to concurrently compute the histograms
 	for _, s := range slices {
 		wg.Add(1)
 		go func(filenames []string) {
 			defer wg.Done()
 			computeHistograms(filenames, d, histChan)
 		}(s)
-
-		queryHist, err := computeHistogram(queryFilePath, d)
-		if err != nil {
-			panic(err)
-		}
-
-		similarImages := make([]Histogram, 0, 5)
-		for hist := range histChan {
-			var r float64
-			// don't count the query histogram
-			if hist.fileName == queryHist.fileName {
-				continue
-			}
-			r = compareHistograms(queryHist, hist)
-			hist.relatedness = r
-			similarImages = append(similarImages, hist)
-		}
-
-		sort.Slice(similarImages, func(i, j int) bool {
-			return similarImages[i].relatedness > similarImages[j].relatedness
-		})
-
-		fmt.Printf("Top 5 most related images to %s:\n", queryHist.fileName)
-		for i := 0; i < 5; i++ {
-			image := similarImages[i]
-			fmt.Printf("%d: %s (%.2f)\n", i+1, image.fileName, image.relatedness)
-		}
-		runtime := time.Since(start)
-		fmt.Printf("total runtime: %d ms", runtime.Milliseconds())
 	}
+
+	// Step 4: compute the query histogram
+	queryHist, err := computeHistogram(queryFilePath, d)
+	if err != nil {
+		panic(err)
+	}
+
+	// Step 5: read the channel of histograms
+	similarImages := make([]Histogram, 0, 5)
+	for hist := range histChan {
+		var r float64
+		// don't count the query histogram
+		if hist.fileName == queryHist.fileName {
+			continue
+		}
+		// Step 5a: compare the histograms to the query when it's recieved
+		r = compareHistograms(queryHist, hist)
+		hist.relatedness = r
+		similarImages = append(similarImages, hist)
+	}
+
+	// Step 5b (kinda): get the 5 most similar images
+	sort.Slice(similarImages, func(i, j int) bool {
+		return similarImages[i].relatedness > similarImages[j].relatedness
+	})
+
+	// Step 6: print the list of the 5 most similar images
+	fmt.Printf("Top 5 most related images to %s:\n", queryHist.fileName)
+	for i := 0; i < 5; i++ {
+		image := similarImages[i]
+		fmt.Printf("%d: %s (%.2f)\n", i+1, image.fileName, image.relatedness)
+	}
+	runtime := time.Since(start)
+	fmt.Printf("total runtime: %d ms", runtime.Milliseconds())
 }
