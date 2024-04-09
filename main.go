@@ -141,77 +141,80 @@ func main() {
 	// Step 1: create histogram channel
 	k := 1048
 	d := 3
-	histChan := make(chan Histogram, k)
-	var wg sync.WaitGroup
 	
-	
-	// Step 2: get the list of all image filenames in the dir
-	var filenames []string
-	for _, file := range dataset {
-	
-		if strings.HasSuffix(file.Name(), ".jpg") {
-			filenames = append(filenames, filepath.Join(args[2], file.Name()))
+	for t:=0;t<10;t++{
+		histChan := make(chan Histogram, k)
+		var wg sync.WaitGroup
+		
+		
+		// Step 2: get the list of all image filenames in the dir
+		var filenames []string
+		for _, file := range dataset {
+		
+			if strings.HasSuffix(file.Name(), ".jpg") {
+				filenames = append(filenames, filepath.Join(args[2], file.Name()))
+			}
 		}
-	}
-	
-	// Step 3: split the list into k slices
-	sliceSize := len(filenames) / k
-	slices := make([][]string, k)
-	for i := 0; i < k; i++ {
-		start := i * sliceSize
-		end := start + sliceSize
-		if i == k-1 {
-			end = len(filenames)
+		
+		// Step 3: split the list into k slices
+		sliceSize := len(filenames) / k
+		slices := make([][]string, k)
+		for i := 0; i < k; i++ {
+			start := i * sliceSize
+			end := start + sliceSize
+			if i == k-1 {
+				end = len(filenames)
+			}
+			slices[i] = filenames[start:end]
 		}
-		slices[i] = filenames[start:end]
-	}
-	
-	start := time.Now()
-	// Step 3½: send the slices to concurrently compute the histograms
-	for i, s := range slices {
-		wg.Add(1)
-		go func(filenames []string) {
-			defer wg.Done()
-			computeHistograms(filenames, d, histChan, i)
-			}(s)
-	}
-
-	// Step 4: compute the query histogram
-	queryHist, err := computeHistogram(queryFilePath, d)
-	if err != nil {
-		panic(err)
-	}
-	
-	go func() {
-		wg.Wait()
-		close(histChan)
-	}()
-	
-	// Step 5: read the channel of histograms
-	similarImages := make([]Histogram, 0, 5)
-	for hist := range histChan {
-		var r float64
-		// don't count the query histogram
-		if hist.fileName == queryHist.fileName {
-			continue
+		
+		start := time.Now()
+		// Step 3½: send the slices to concurrently compute the histograms
+		for i, s := range slices {
+			wg.Add(1)
+			go func(filenames []string) {
+				defer wg.Done()
+				computeHistograms(filenames, d, histChan, i)
+				}(s)
 		}
-		// Step 5a: compare the histograms to the query when it's recieved
-		r = compareHistograms(queryHist, hist)
-		hist.relatedness = r
-		similarImages = append(similarImages, hist)
-	}
 
-	// Step 5b (kinda): get the 5 most similar images
-	sort.Slice(similarImages, func(i, j int) bool {
-		return similarImages[i].relatedness > similarImages[j].relatedness
-	})
+		// Step 4: compute the query histogram
+		queryHist, err := computeHistogram(queryFilePath, d)
+		if err != nil {
+			panic(err)
+		}
+		
+		go func() {
+			wg.Wait()
+			close(histChan)
+		}()
+		
+		// Step 5: read the channel of histograms
+		similarImages := make([]Histogram, 0, 5)
+		for hist := range histChan {
+			var r float64
+			// don't count the query histogram
+			if hist.fileName == queryHist.fileName {
+				continue
+			}
+			// Step 5a: compare the histograms to the query when it's recieved
+			r = compareHistograms(queryHist, hist)
+			hist.relatedness = r
+			similarImages = append(similarImages, hist)
+		}
 
-	// Step 6: print the list of the 5 most similar images
-	fmt.Printf("Top 5 most related images to %s:    (k=%d)\n", queryHist.fileName, k)
-	for i := 0; i < 5; i++ {
-		image := similarImages[i]
-		fmt.Printf("%d: %s (%.2f)\n", i+1, image.fileName, image.relatedness)
-	}
-	runtime := time.Since(start)
-	fmt.Printf("total runtime: %d ms", runtime.Milliseconds())
+		// Step 5b (kinda): get the 5 most similar images
+		sort.Slice(similarImages, func(i, j int) bool {
+			return similarImages[i].relatedness > similarImages[j].relatedness
+		})
+		runtime := time.Since(start)
+
+		// Step 6: print the list of the 5 most similar images
+		fmt.Printf("Top 5 most related images to %s: (test # %d , k=%d)\n", filepath.Base(queryHist.fileName),t+1, k)
+		for i := 0; i < 5; i++ {
+			image := similarImages[i]
+			fmt.Printf("%d: %s (%.2f)\n", i+1, filepath.Base(image.fileName), image.relatedness)
+		}
+		fmt.Printf("total runtime: %d ms", runtime.Milliseconds())
+		}
 }

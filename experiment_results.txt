@@ -1,0 +1,584 @@
+
+    ===== HARDWARE DETAILS =====
+
+OS Name:                   Microsoft Windows 11 Home
+OS Version:                10.0.22631 N/A Build 22631
+
+Name=Intel(R) Core(TM) i5-1035G1 CPU @ 1.00GHz
+NumberOfCores=4
+NumberOfLogicalProcessors=8
+
+
+     ===== TEST DATA =====
+
+Top 5 most related images to q00.jpg:  (test # 1) (k=1)
+1: 1144.jpg (1.00)
+2: 3806.jpg (0.70)
+3: 3756.jpg (0.66)
+4: 3714.jpg (0.66)
+5: 3668.jpg (0.64)
+total runtime: 22105 ms
+
+Top 5 most related images to q00.jpg:  (test # 2) (k=1)
+1: 1144.jpg (1.00)
+2: 3806.jpg (0.70)
+3: 3756.jpg (0.66)
+4: 3714.jpg (0.66)
+5: 3668.jpg (0.64)
+total runtime: 22188 ms
+
+Top 5 most related images to q00.jpg:  (test # 3) (k=1)
+1: 1144.jpg (1.00)
+2: 3806.jpg (0.70)
+3: 3756.jpg (0.66)
+4: 3714.jpg (0.66)
+5: 3668.jpg (0.64)
+total runtime: 22216 ms
+
+Top 5 most related images to q00.jpg:  (test # 4) (k=1)
+1: 1144.jpg (1.00)
+2: 3806.jpg (0.70)
+3: 3756.jpg (0.66)
+4: 3714.jpg (0.66)
+5: 3668.jpg (0.64)
+total runtime: 21905 ms
+
+Top 5 most related images to q00.jpg:  (test # 5) (k=1)
+1: 1144.jpg (1.00)
+2: 3806.jpg (0.70)
+3: 3756.jpg (0.66)
+4: 3714.jpg (0.66)
+5: 3668.jpg (0.64)
+total runtime: 21591 ms
+
+Top 5 most related images to q00.jpg:  (test # 6) (k=1)
+1: 1144.jpg (1.00)
+2: 3806.jpg (0.70)
+3: 3756.jpg (0.66)
+4: 3714.jpg (0.66)
+5: 3668.jpg (0.64)
+total runtime: 22031 ms
+
+Top 5 most related images to q00.jpg:  (test # 7) (k=1)
+1: 1144.jpg (1.00)
+2: 3806.jpg (0.70)
+3: 3756.jpg (0.66)
+4: 3714.jpg (0.66)
+5: 3668.jpg (0.64)
+total runtime: 22822 ms
+
+Top 5 most related images to q00.jpg:  (test # 8) (k=1)
+1: 1144.jpg (1.00)
+2: 3806.jpg (0.70)
+3: 3756.jpg (0.66)
+4: 3714.jpg (0.66)
+5: 3668.jpg (0.64)
+total runtime: 23034 ms
+
+Top 5 most related images to q00.jpg:  (test # 9) (k=1)
+1: 1144.jpg (1.00)
+2: 3806.jpg (0.70)
+3: 3756.jpg (0.66)
+4: 3714.jpg (0.66)
+5: 3668.jpg (0.64)
+total runtime: 22661 ms
+
+Top 5 most related images to q00.jpg:  (test # 10) (k=1)
+1: 1144.jpg (1.00)
+2: 3806.jpg (0.70)
+3: 3756.jpg (0.66)
+4: 3714.jpg (0.66)
+5: 3668.jpg (0.64)
+total runtime: 24423 ms
+
+
+
+Top 5 most related images to q01.jpg:  (test # 1) (k=2)
+1: 3588.jpg (0.57)
+2: 2536.jpg (0.56)
+3: 3553.jpg (0.54)
+4: 1875.jpg (0.53)
+5: 2592.jpg (0.50)
+total runtime: 15552 ms
+
+Top 5 most related images to q01.jpg:  (test # 2) (k=2)
+1: 3588.jpg (0.57)
+2: 2536.jpg (0.56)
+3: 3553.jpg (0.54)
+4: 1875.jpg (0.53)
+5: 2592.jpg (0.50)
+total runtime: 15224 ms
+
+Top 5 most related images to q01.jpg:  (test # 3) (k=2)
+1: 3588.jpg (0.57)
+2: 2536.jpg (0.56)
+3: 3553.jpg (0.54)
+4: 1875.jpg (0.53)
+5: 2592.jpg (0.50)
+total runtime: 14233 ms
+
+Top 5 most related images to q01.jpg:  (test # 4) (k=2)
+1: 3588.jpg (0.57)
+2: 2536.jpg (0.56)
+3: 3553.jpg (0.54)
+4: 1875.jpg (0.53)
+5: 2592.jpg (0.50)
+total runtime: 13924 ms
+
+Top 5 most related images to q01.jpg:  (test # 5) (k=2)
+1: 3588.jpg (0.57)
+2: 2536.jpg (0.56)
+3: 3553.jpg (0.54)
+4: 1875.jpg (0.53)
+5: 2592.jpg (0.50)
+total runtime: 13791 ms
+
+Top 5 most related images to q01.jpg:  (test # 6) (k=2)
+1: 3588.jpg (0.57)
+2: 2536.jpg (0.56)
+3: 3553.jpg (0.54)
+4: 1875.jpg (0.53)
+5: 2592.jpg (0.50)
+total runtime: 14135 ms
+
+Top 5 most related images to q01.jpg:  (test # 7) (k=2)
+1: 3588.jpg (0.57)
+2: 2536.jpg (0.56)
+3: 3553.jpg (0.54)
+4: 1875.jpg (0.53)
+5: 2592.jpg (0.50)
+total runtime: 14128 ms
+
+Top 5 most related images to q01.jpg:  (test # 8) (k=2)
+1: 3588.jpg (0.57)
+2: 2536.jpg (0.56)
+3: 3553.jpg (0.54)
+4: 1875.jpg (0.53)
+5: 2592.jpg (0.50)
+total runtime: 13717 ms
+
+Top 5 most related images to q01.jpg:  (test # 9) (k=2)
+1: 3588.jpg (0.57)
+2: 2536.jpg (0.56)
+3: 3553.jpg (0.54)
+4: 1875.jpg (0.53)
+5: 2592.jpg (0.50)
+total runtime: 13728 ms
+
+Top 5 most related images to q01.jpg:  (test # 10) (k=2)
+1: 3588.jpg (0.57)
+2: 2536.jpg (0.56)
+3: 3553.jpg (0.54)
+4: 1875.jpg (0.53)
+5: 2592.jpg (0.50)
+total runtime: 14195 ms
+
+
+
+Top 5 most related images to q02.jpg:  (test # 1) (k=4)
+1: 1091.jpg (0.65)
+2: 3005.jpg (0.65)
+3: 3728.jpg (0.63)
+4: 850.jpg (0.63)
+5: 1090.jpg (0.62)
+total runtime: 9139 ms
+
+Top 5 most related images to q02.jpg:  (test # 2) (k=4)
+1: 1091.jpg (0.65)
+2: 3005.jpg (0.65)
+3: 3728.jpg (0.63)
+4: 850.jpg (0.63)
+5: 1090.jpg (0.62)
+total runtime: 9815 ms
+
+Top 5 most related images to q02.jpg:  (test # 3) (k=4)
+1: 1091.jpg (0.65)
+2: 3005.jpg (0.65)
+3: 3728.jpg (0.63)
+4: 850.jpg (0.63)
+5: 1090.jpg (0.62)
+total runtime: 9714 ms
+
+Top 5 most related images to q02.jpg:  (test # 4) (k=4)
+1: 1091.jpg (0.65)
+2: 3005.jpg (0.65)
+3: 3728.jpg (0.63)
+4: 850.jpg (0.63)
+5: 1090.jpg (0.62)
+total runtime: 9633 ms
+
+Top 5 most related images to q02.jpg:  (test # 5) (k=4)
+1: 1091.jpg (0.65)
+2: 3005.jpg (0.65)
+3: 3728.jpg (0.63)
+4: 850.jpg (0.63)
+5: 1090.jpg (0.62)
+total runtime: 9667 ms
+
+Top 5 most related images to q02.jpg:  (test # 6) (k=4)
+1: 1091.jpg (0.65)
+2: 3005.jpg (0.65)
+3: 3728.jpg (0.63)
+4: 850.jpg (0.63)
+5: 1090.jpg (0.62)
+total runtime: 10417 ms
+
+Top 5 most related images to q02.jpg:  (test # 7) (k=4)
+1: 1091.jpg (0.65)
+2: 3005.jpg (0.65)
+3: 3728.jpg (0.63)
+4: 850.jpg (0.63)
+5: 1090.jpg (0.62)
+total runtime: 10623 ms
+
+Top 5 most related images to q02.jpg:  (test # 8) (k=4)
+1: 1091.jpg (0.65)
+2: 3005.jpg (0.65)
+3: 3728.jpg (0.63)
+4: 850.jpg (0.63)
+5: 1090.jpg (0.62)
+total runtime: 9841 ms
+
+Top 5 most related images to q02.jpg:  (test # 9) (k=4)
+1: 1091.jpg (0.65)
+2: 3005.jpg (0.65)
+3: 3728.jpg (0.63)
+4: 850.jpg (0.63)
+5: 1090.jpg (0.62)
+total runtime: 9585 ms
+
+Top 5 most related images to q02.jpg:  (test # 10) (k=4)
+1: 1091.jpg (0.65)
+2: 3005.jpg (0.65)
+3: 3728.jpg (0.63)
+4: 850.jpg (0.63)
+5: 1090.jpg (0.62)
+total runtime: 9644 ms
+
+
+
+Top 5 most related images to q03.jpg:  (test # 1) (k=16)
+1: 1255.jpg (0.55)
+2: 3532.jpg (0.54)
+3: 4507.jpg (0.54)
+4: 692.jpg (0.54)
+5: 4737.jpg (0.53)
+total runtime: 7374 ms
+
+Top 5 most related images to q03.jpg:  (test # 2) (k=16)
+1: 1255.jpg (0.55)
+2: 3532.jpg (0.54)
+3: 4507.jpg (0.54)
+4: 692.jpg (0.54)
+5: 4737.jpg (0.53)
+total runtime: 7304 ms
+
+Top 5 most related images to q03.jpg:  (test # 3) (k=16)
+1: 1255.jpg (0.55)
+2: 3532.jpg (0.54)
+3: 4507.jpg (0.54)
+4: 692.jpg (0.54)
+5: 4737.jpg (0.53)
+total runtime: 7274 ms
+
+Top 5 most related images to q03.jpg:  (test # 4) (k=16)
+1: 1255.jpg (0.55)
+2: 3532.jpg (0.54)
+3: 4507.jpg (0.54)
+4: 692.jpg (0.54)
+5: 4737.jpg (0.53)
+total runtime: 7401 ms
+
+Top 5 most related images to q03.jpg:  (test # 5) (k=16)
+1: 1255.jpg (0.55)
+2: 3532.jpg (0.54)
+3: 4507.jpg (0.54)
+4: 692.jpg (0.54)
+5: 4737.jpg (0.53)
+total runtime: 7921 ms
+
+Top 5 most related images to q03.jpg:  (test # 6) (k=16)
+1: 1255.jpg (0.55)
+2: 3532.jpg (0.54)
+3: 4507.jpg (0.54)
+4: 692.jpg (0.54)
+5: 4737.jpg (0.53)
+total runtime: 6907 ms
+
+Top 5 most related images to q03.jpg:  (test # 7) (k=16)
+1: 1255.jpg (0.55)
+2: 3532.jpg (0.54)
+3: 4507.jpg (0.54)
+4: 692.jpg (0.54)
+5: 4737.jpg (0.53)
+total runtime: 7415 ms
+
+Top 5 most related images to q03.jpg:  (test # 8) (k=16)
+1: 1255.jpg (0.55)
+2: 3532.jpg (0.54)
+3: 4507.jpg (0.54)
+4: 692.jpg (0.54)
+5: 4737.jpg (0.53)
+total runtime: 7259 ms
+
+Top 5 most related images to q03.jpg:  (test # 9) (k=16)
+1: 1255.jpg (0.55)
+2: 3532.jpg (0.54)
+3: 4507.jpg (0.54)
+4: 692.jpg (0.54)
+5: 4737.jpg (0.53)
+total runtime: 7132 ms
+
+Top 5 most related images to q03.jpg:  (test # 10) (k=16)
+1: 1255.jpg (0.55)
+2: 3532.jpg (0.54)
+3: 4507.jpg (0.54)
+4: 692.jpg (0.54)
+5: 4737.jpg (0.53)
+total runtime: 7577 ms
+
+
+
+Top 5 most related images to q04.jpg:  (test # 1) (k=64)
+1: 1799.jpg (0.85)
+2: 848.jpg (0.49)
+3: 4261.jpg (0.49)
+4: 1800.jpg (0.47)
+5: 1937.jpg (0.47)
+total runtime: 6478 ms
+
+Top 5 most related images to q04.jpg:  (test # 2) (k=64)
+1: 1799.jpg (0.85)
+2: 848.jpg (0.49)
+3: 4261.jpg (0.49)
+4: 1800.jpg (0.47)
+5: 1937.jpg (0.47)
+total runtime: 7004 ms
+
+Top 5 most related images to q04.jpg:  (test # 3) (k=64)
+1: 1799.jpg (0.85)
+2: 848.jpg (0.49)
+3: 4261.jpg (0.49)
+4: 1800.jpg (0.47)
+5: 1937.jpg (0.47)
+total runtime: 6851 ms
+
+Top 5 most related images to q04.jpg:  (test # 4) (k=64)
+1: 1799.jpg (0.85)
+2: 848.jpg (0.49)
+3: 4261.jpg (0.49)
+4: 1800.jpg (0.47)
+5: 1937.jpg (0.47)
+total runtime: 7058 ms
+
+Top 5 most related images to q04.jpg:  (test # 5) (k=64)
+1: 1799.jpg (0.85)
+2: 848.jpg (0.49)
+3: 4261.jpg (0.49)
+4: 1800.jpg (0.47)
+5: 1937.jpg (0.47)
+total runtime: 6942 ms
+
+Top 5 most related images to q04.jpg:  (test # 6) (k=64)
+1: 1799.jpg (0.85)
+2: 848.jpg (0.49)
+3: 4261.jpg (0.49)
+4: 1800.jpg (0.47)
+5: 1937.jpg (0.47)
+total runtime: 7096 ms
+
+Top 5 most related images to q04.jpg:  (test # 7) (k=64)
+1: 1799.jpg (0.85)
+2: 848.jpg (0.49)
+3: 4261.jpg (0.49)
+4: 1800.jpg (0.47)
+5: 1937.jpg (0.47)
+total runtime: 6989 ms
+
+Top 5 most related images to q04.jpg:  (test # 8) (k=64)
+1: 1799.jpg (0.85)
+2: 848.jpg (0.49)
+3: 4261.jpg (0.49)
+4: 1800.jpg (0.47)
+5: 1937.jpg (0.47)
+total runtime: 7273 ms
+
+Top 5 most related images to q04.jpg:  (test # 9) (k=64)
+1: 1799.jpg (0.85)
+2: 848.jpg (0.49)
+3: 4261.jpg (0.49)
+4: 1800.jpg (0.47)
+5: 1937.jpg (0.47)
+total runtime: 7062 ms
+
+Top 5 most related images to q04.jpg:  (test # 10) (k=64)
+1: 1799.jpg (0.85)
+2: 848.jpg (0.49)
+3: 4261.jpg (0.49)
+4: 1800.jpg (0.47)
+5: 1937.jpg (0.47)
+total runtime: 7129 ms
+
+
+
+Top 5 most related images to q05.jpg:  (test # 1) (k=256)
+1: 2223.jpg (0.62)
+2: 3091.jpg (0.60)
+3: 2550.jpg (0.53)
+4: 2883.jpg (0.52)
+5: 2901.jpg (0.52)
+total runtime: 7107 ms
+
+Top 5 most related images to q05.jpg:  (test # 2) (k=256)
+1: 2223.jpg (0.62)
+2: 3091.jpg (0.60)
+3: 2550.jpg (0.53)
+4: 2883.jpg (0.52)
+5: 2901.jpg (0.52)
+total runtime: 6871 ms
+
+Top 5 most related images to q05.jpg:  (test # 3) (k=256)
+1: 2223.jpg (0.62)
+2: 3091.jpg (0.60)
+3: 2550.jpg (0.53)
+4: 2883.jpg (0.52)
+5: 2901.jpg (0.52)
+total runtime: 7197 ms
+
+Top 5 most related images to q05.jpg:  (test # 4) (k=256)
+1: 2223.jpg (0.62)
+2: 3091.jpg (0.60)
+3: 2550.jpg (0.53)
+4: 2883.jpg (0.52)
+5: 2901.jpg (0.52)
+total runtime: 7175 ms
+
+Top 5 most related images to q05.jpg:  (test # 5) (k=256)
+1: 2223.jpg (0.62)
+2: 3091.jpg (0.60)
+3: 2550.jpg (0.53)
+4: 2883.jpg (0.52)
+5: 2901.jpg (0.52)
+total runtime: 7481 ms
+
+Top 5 most related images to q05.jpg:  (test # 6) (k=256)
+1: 2223.jpg (0.62)
+2: 3091.jpg (0.60)
+3: 2550.jpg (0.53)
+4: 2883.jpg (0.52)
+5: 2901.jpg (0.52)
+total runtime: 7511 ms
+
+Top 5 most related images to q05.jpg:  (test # 7) (k=256)
+1: 2223.jpg (0.62)
+2: 3091.jpg (0.60)
+3: 2550.jpg (0.53)
+4: 2883.jpg (0.52)
+5: 2901.jpg (0.52)
+total runtime: 7864 ms
+
+Top 5 most related images to q05.jpg:  (test # 8) (k=256)
+1: 2223.jpg (0.62)
+2: 3091.jpg (0.60)
+3: 2550.jpg (0.53)
+4: 2883.jpg (0.52)
+5: 2901.jpg (0.52)
+total runtime: 7506 ms
+
+Top 5 most related images to q05.jpg:  (test # 9) (k=256)
+1: 2223.jpg (0.62)
+2: 3091.jpg (0.60)
+3: 2550.jpg (0.53)
+4: 2883.jpg (0.52)
+5: 2901.jpg (0.52)
+total runtime: 7343 ms
+
+Top 5 most related images to q05.jpg:  (test # 10) (k=256)
+1: 2223.jpg (0.62)
+2: 3091.jpg (0.60)
+3: 2550.jpg (0.53)
+4: 2883.jpg (0.52)
+5: 2901.jpg (0.52)
+total runtime: 7474 ms
+
+
+
+Top 5 most related images to q06.jpg:  (test # 1) (k=1048)
+1: 2278.jpg (0.78)
+2: 2224.jpg (0.72)
+3: 1108.jpg (0.71)
+4: 1917.jpg (0.69)
+5: 3806.jpg (0.69)
+total runtime: 7745 ms
+
+Top 5 most related images to q06.jpg:  (test # 2) (k=1048)
+1: 2278.jpg (0.78)
+2: 2224.jpg (0.72)
+3: 1108.jpg (0.71)
+4: 1917.jpg (0.69)
+5: 3806.jpg (0.69)
+total runtime: 8420 ms
+
+Top 5 most related images to q06.jpg:  (test # 3) (k=1048)
+1: 2278.jpg (0.78)
+2: 2224.jpg (0.72)
+3: 1108.jpg (0.71)
+4: 1917.jpg (0.69)
+5: 3806.jpg (0.69)
+total runtime: 8200 ms
+
+Top 5 most related images to q06.jpg:  (test # 4) (k=1048)
+1: 2278.jpg (0.78)
+2: 2224.jpg (0.72)
+3: 1108.jpg (0.71)
+4: 1917.jpg (0.69)
+5: 3806.jpg (0.69)
+total runtime: 8455 ms
+
+Top 5 most related images to q06.jpg:  (test # 5) (k=1048)
+1: 2278.jpg (0.78)
+2: 2224.jpg (0.72)
+3: 1108.jpg (0.71)
+4: 1917.jpg (0.69)
+5: 3806.jpg (0.69)
+total runtime: 8512 ms
+
+Top 5 most related images to q06.jpg:  (test # 6) (k=1048)
+1: 2278.jpg (0.78)
+2: 2224.jpg (0.72)
+3: 1108.jpg (0.71)
+4: 1917.jpg (0.69)
+5: 3806.jpg (0.69)
+total runtime: 8850 ms
+
+Top 5 most related images to q06.jpg:  (test # 7) (k=1048)
+1: 2278.jpg (0.78)
+2: 2224.jpg (0.72)
+3: 1108.jpg (0.71)
+4: 1917.jpg (0.69)
+5: 3806.jpg (0.69)
+total runtime: 8494 ms
+
+Top 5 most related images to q06.jpg:  (test # 8) (k=1048)
+1: 2278.jpg (0.78)
+2: 2224.jpg (0.72)
+3: 1108.jpg (0.71)
+4: 1917.jpg (0.69)
+5: 3806.jpg (0.69)
+total runtime: 8346 ms
+
+Top 5 most related images to q06.jpg:  (test # 9) (k=1048)
+1: 2278.jpg (0.78)
+2: 2224.jpg (0.72)
+3: 1108.jpg (0.71)
+4: 1917.jpg (0.69)
+5: 3806.jpg (0.69)
+total runtime: 8103 ms
+
+Top 5 most related images to q06.jpg:  (test # 10) (k=1048)
+1: 2278.jpg (0.78)
+2: 2224.jpg (0.72)
+3: 1108.jpg (0.71)
+4: 1917.jpg (0.69)
+5: 3806.jpg (0.69)
+total runtime: 8566 ms
