@@ -1,3 +1,7 @@
+// Ben Miller - 300297574
+// Arin Barak - 300280812
+// CSI2120 Course Project - Pt. 3
+
 package main
 
 import (
@@ -135,7 +139,7 @@ func main() {
 	}
 	
 	// Step 1: create histogram channel
-	k := 1
+	k := 1048
 	d := 3
 	histChan := make(chan Histogram, k)
 	var wg sync.WaitGroup
