@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"image"
+	_ "image/jpeg"
 	"math"
 	"os"
 	"path/filepath"
@@ -15,9 +16,7 @@ import (
 type Histogram struct {
 	relatedness float64
 	fileName    string
-	histogram   []int
-	// README: don't we normalize the histograms?
-	// so the histogram should be an array of floats right ?
+	histogram   []float64
 }
 
 // from the 'readImage.go' file on the brightspace
@@ -39,10 +38,13 @@ func computeHistogram(imagePath string, depth int) (Histogram, error) {
 	bounds := img.Bounds()
 	width, height := bounds.Max.X, bounds.Max.Y
 
+	histo_size := int(math.Pow(2, float64(3*depth)))
+	histogram := make([]int, histo_size)
+
 	// Display RGB values for the first 5x5 pixels
 	// remove y < 5 and x < 5  to scan the entire image
-	for y := 0; y < height && y < 5; y++ {
-		for x := 0; x < width && x < 5; x++ {
+	for y := 0; y < height; y++ {
+		for x := 0; x < width; x++ {
 
 			// Convert the pixel to RGBA
 			red, green, blue, _ := img.At(x, y).RGBA()
@@ -52,12 +54,22 @@ func computeHistogram(imagePath string, depth int) (Histogram, error) {
 			blue >>= 8
 			green >>= 8
 
-			// Display the RGB values
-			fmt.Printf("Pixel at (%d, %d): R=%d, G=%d, B=%d\n", x, y, red, green, blue)
+			shifted_red := red >> (8-depth)
+			shifted_blue := blue >> (8-depth)
+			shifted_green := green >> (8-depth)
+
+			idx := (shifted_red << (2*depth) ) + ( shifted_green << depth ) + shifted_blue 
+			histogram[idx] += 1
 		}
 	}
 
-	h := Histogram{0.0, imagePath, make([]int, depth)}
+	normalized_histogram := make([]float64, histo_size)
+
+	for i:=0; i<histo_size;i++ {
+		normalized_histogram[i] = float64(histogram[i])/float64(width*height)
+	}
+
+	h := Histogram{0.0, imagePath, normalized_histogram}
 	return h, nil
 }
 
@@ -65,7 +77,7 @@ func compareHistograms(h1 Histogram, h2 Histogram) float64 {
 
 	var sum float64 = 0
 
-	for i := 0; i < 255; i++ {
+	for i := 0; i < len(h1.histogram); i++ {
 
 		curr_h1_val := float64(h1.histogram[i])
 		curr_h2_val := float64(h2.histogram[i])
@@ -113,9 +125,9 @@ func main() {
 		panic(err)
 	}
 
-	k_vals := []int{1, 2, 4, 16, 64, 156, 1048}
-	d := 5
-	histChan := make(chan Histogram)
+	k := 1
+	d := 3
+	
 
 	var filenames []string
 	for _, file := range dataset {
@@ -124,73 +136,55 @@ func main() {
 		}
 	}
 
-	for k := range k_vals {
+	sliceSize := len(filenames) / k
+	slices := make([][]string, k)
+	for i := 0; i < k; i++ {
+		start := i * sliceSize
+		end := start + sliceSize
+		if i == k-1 {
+			end = len(filenames)
+		}
+		slices[i] = filenames[start:end]
+	}
 
-		sliceSize := len(filenames) / k
-		slices := make([][]string, k)
+	var wg sync.WaitGroup
+	start := time.Now()
+	histChan := make(chan Histogram)
 
-		for i := 0; i < k; i++ {
-			start := i * sliceSize
-			end := start + sliceSize
-			if i == k-1 {
-				end = len(filenames)
-			}
-			slices[i] = filenames[start:end]
+	for _, s := range slices {
+		wg.Add(1)
+		go func(filenames []string) {
+			defer wg.Done()
+			computeHistograms(filenames, d, histChan)
+		}(s)
+
+		queryHist, err := computeHistogram(queryFilePath, d)
+		if err != nil {
+			panic(err)
 		}
 
-		tests := make([]int64, 10)
-		for i := 0; i < 10; i++ {
-			start := time.Now()
-			var wg sync.WaitGroup
-			for _, s := range slices {
-				wg.Add(1)
-				go func(filenames []string) {
-					defer wg.Done()
-					computeHistograms(filenames, d, histChan)
-				}(s)
+		similarImages := make([]Histogram, 0, 5)
+		for hist := range histChan {
+			var r float64
+			// don't count the query histogram
+			if hist.fileName == queryHist.fileName {
+				continue
 			}
-
-			queryHist, err := computeHistogram(queryFilePath, d)
-			if err != nil {
-				panic(err)
-			}
-
-			similarImages := make([]Histogram, 0, 5)
-			for hist := range histChan {
-				similarImages = append(similarImages, hist)
-			}
-
-			sort.Slice(similarImages, func(i, j int) bool {
-				return similarImages[i].relatedness > similarImages[j].relatedness
-			})
-
-			fmt.Printf("Top 5 most related images to %s:\n", queryHist.fileName)
-			for i := 0; i < 5; i++ {
-				image := similarImages[i]
-				fmt.Printf("%d: %s (%.2f)\n", i+1, image.fileName, image.relatedness)
-			}
-
-			wg.Wait()
-
-			runTime := time.Since(start)
-			fmt.Printf("Test #%d Runtime: %d\n", (i + 1), runTime.Milliseconds())
-			tests[i] = runTime.Milliseconds()
-		}
-		var sum, max, min int64
-		var median float64
-		sum = 0
-		for n := 0; n < 10; n++ {
-			sum += tests[n]
+			r = compareHistograms(queryHist, hist)
+			hist.relatedness = r
+			similarImages = append(similarImages, hist)
 		}
 
-		sort.Slice(tests, func(i, j int) bool {
-			return tests[i] < tests[j]
+		sort.Slice(similarImages, func(i, j int) bool {
+			return similarImages[i].relatedness > similarImages[j].relatedness
 		})
-		max = tests[9]
-		min = tests[0]
-		median = float64((tests[4] + tests[5]) / 2)
 
-		fmt.Println("TEST STATISTICS:")
-		fmt.Printf("k=%d\n  max runtime=%d\n  min runtime=%d\n  median runtime:%f\n  average runtime: %f", k, max, min, median, float64(sum/10))
+		fmt.Printf("Top 5 most related images to %s:\n", queryHist.fileName)
+		for i := 0; i < 5; i++ {
+			image := similarImages[i]
+			fmt.Printf("%d: %s (%.2f)\n", i+1, image.fileName, image.relatedness)
+		}
+		runtime := time.Since(start)
+		fmt.Printf("total runtime: %d ms", runtime.Milliseconds())
 	}
 }
