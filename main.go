@@ -101,29 +101,17 @@ func computeHistogram(imagePath string, depth int) (Histogram, error) {
 
 
 
-func computeHistograms(imagePaths []string, depth int, hChan chan<- Histogram) {
-
-	var wg sync.WaitGroup
-
+func computeHistograms(imagePaths []string, depth int, hChan chan<- Histogram, n int) {
 	for _, path := range imagePaths {
-		wg.Add(1)
+		histogram, err := computeHistogram(path, depth)
 
-		go func(path string) {
-			defer wg.Done()
-			histogram, err := computeHistogram(path, depth)
+		if err != nil {
+			fmt.Printf("Error concurrently computing histograms for file %s: %p", path, err)
+			return
+		}
 
-			if err != nil {
-				fmt.Printf("Error concurrently computing histograms for file %s: %p", path, err)
-				return
-			}
-			hChan <- histogram
-		}(path)
+		hChan <- histogram
 	}
-
-	go func() {
-		wg.Wait()
-		close(hChan)
-	}()
 }
 
 
@@ -134,33 +122,34 @@ func computeHistograms(imagePaths []string, depth int, hChan chan<- Histogram) {
 
 
 func main() {
-
+	
 	os.Open("queryImages/q01.jpg")
-
+	
 	args := os.Args
-
+	
 	queryFilePath := args[1]
 	dataset, err := os.ReadDir(args[2])
-
+	
 	if err != nil {
 		panic(err)
 	}
-
+	
 	// Step 1: create histogram channel
 	k := 1
 	d := 3
-	histChan := make(chan Histogram)
+	histChan := make(chan Histogram, k)
 	var wg sync.WaitGroup
 	
-
+	
 	// Step 2: get the list of all image filenames in the dir
 	var filenames []string
 	for _, file := range dataset {
+	
 		if strings.HasSuffix(file.Name(), ".jpg") {
 			filenames = append(filenames, filepath.Join(args[2], file.Name()))
 		}
 	}
-
+	
 	// Step 3: split the list into k slices
 	sliceSize := len(filenames) / k
 	slices := make([][]string, k)
@@ -172,15 +161,15 @@ func main() {
 		}
 		slices[i] = filenames[start:end]
 	}
-
+	
 	start := time.Now()
 	// Step 3½: send the slices to concurrently compute the histograms
-	for _, s := range slices {
+	for i, s := range slices {
 		wg.Add(1)
 		go func(filenames []string) {
 			defer wg.Done()
-			computeHistograms(filenames, d, histChan)
-		}(s)
+			computeHistograms(filenames, d, histChan, i)
+			}(s)
 	}
 
 	// Step 4: compute the query histogram
@@ -188,7 +177,12 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-
+	
+	go func() {
+		wg.Wait()
+		close(histChan)
+	}()
+	
 	// Step 5: read the channel of histograms
 	similarImages := make([]Histogram, 0, 5)
 	for hist := range histChan {
@@ -209,7 +203,7 @@ func main() {
 	})
 
 	// Step 6: print the list of the 5 most similar images
-	fmt.Printf("Top 5 most related images to %s:\n", queryHist.fileName)
+	fmt.Printf("Top 5 most related images to %s:    (k=%d)\n", queryHist.fileName, k)
 	for i := 0; i < 5; i++ {
 		image := similarImages[i]
 		fmt.Printf("%d: %s (%.2f)\n", i+1, image.fileName, image.relatedness)
