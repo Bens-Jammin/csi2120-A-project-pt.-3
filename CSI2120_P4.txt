@@ -1,0 +1,144 @@
+
+?- similarity_search('C:\\Users\\benem\\Downloads\\queries\\queryImages\\q00.jpg.txt', SimilarList).
+SimilarList = [
+    file_score('1144.jpg.txt', 1.0), 
+    file_score('3806.jpg.txt', 0.71), 
+    file_score('3714.jpg.txt', 0.67), 
+    file_score('3756.jpg.txt', 0.66), 
+    file_score('1221.jpg.txt', 0.65)
+    ] .
+
+?- similarity_search('C:\\Users\\benem\\Downloads\\queries\\queryImages\\q01.jpg.txt', SimilarList).
+SimilarList = [
+    file_score('3588.jpg.txt', 0.57), 
+    file_score('2536.jpg.txt', 0.56), 
+    file_score('3553.jpg.txt', 0.54), 
+    file_score('1875.jpg.txt', 0.53), 
+    file_score('2592.jpg.txt', 0.5)
+    ] .
+
+?- similarity_search('C:\\Users\\benem\\Downloads\\queries\\queryImages\\q02.jpg.txt', SimilarList).
+SimilarList = [
+    file_score('1091.jpg.txt', 0.65), 
+    file_score('3005.jpg.txt', 0.64), 
+    file_score('850.jpg.txt', 0.63), 
+    file_score('1090.jpg.txt', 0.62), 
+    file_score('3806.jpg.txt', 0.61)
+    ] .
+
+?- similarity_search('C:\\Users\\benem\\Downloads\\queries\\queryImages\\q03.jpg.txt', SimilarList).
+SimilarList = [
+    file_score('1255.jpg.txt', 0.55), 
+    file_score('3532.jpg.txt', 0.54), 
+    file_score('4737.jpg.txt', 0.53), 
+    file_score('4921.jpg.txt', 0.52), 
+    file_score('1107.jpg.txt', 0.51)
+    ] .
+
+?- similarity_search('C:\\Users\\benem\\Downloads\\queries\\queryImages\\q04.jpg.txt', SimilarList).
+SimilarList = [
+    file_score('1799.jpg.txt', 0.85),
+    file_score('4261.jpg.txt', 0.49),
+    file_score('1800.jpg.txt', 0.47), 
+    file_score('1709.jpg.txt', 0.46), 
+    file_score('1829.jpg.txt', 0.45)
+    ] .
+
+?- similarity_search('C:\\Users\\benem\\Downloads\\queries\\queryImages\\q05.jpg.txt', SimilarList).
+SimilarList = [
+    file_score('2223.jpg.txt', 0.61), 
+    file_score('3091.jpg.txt', 0.6), 
+    file_score('2550.jpg.txt', 0.53), 
+    file_score('2235.jpg.txt', 0.52), 
+    file_score('4483.jpg.txt', 0.51)
+    ] .
+
+?- similarity_search('C:\\Users\\benem\\Downloads\\queries\\queryImages\\q06.jpg.txt', SimilarList).
+SimilarList = [
+    file_score('2278.jpg.txt', 0.78), 
+    file_score('2224.jpg.txt', 0.72), 
+    file_score('1108.jpg.txt', 0.71), 
+    file_score('1917.jpg.txt', 0.7), f
+    ile_score('3756.jpg.txt', 0.69)
+    ] .
+
+?- similarity_search('C:\\Users\\benem\\Downloads\\queries\\queryImages\\q07.jpg.txt', SimilarList).
+SimilarList = [
+    file_score('2377.jpg.txt', 1.0), 
+    file_score('2379.jpg.txt', 0.77), 
+    file_score('2079.jpg.txt', 0.64), 
+    file_score('1653.jpg.txt', 0.63), 
+    file_score('1896.jpg.txt', 0.62)
+    ] .
+
+?- similarity_search('C:\\Users\\benem\\Downloads\\queries\\queryImages\\q08.jpg.txt', SimilarList).
+SimilarList = [
+    file_score('2587.jpg.txt', 0.72), 
+    file_score('1837.jpg.txt', 0.7), 
+    file_score('1217.jpg.txt', 0.67), 
+    file_score('1522.jpg.txt', 0.66), 
+    file_score('4610.jpg.txt', 0.65)
+    ] .
+
+?- similarity_search('C:\\Users\\benem\\Downloads\\queries\\queryImages\\q09.jpg.txt', SimilarList).
+SimilarList = [
+    file_score('2839.jpg.txt', 0.79), 
+    file_score('3414.jpg.txt', 0.51), 
+    file_score('2617.jpg.txt', 0.45), 
+    file_score('4363.jpg.txt', 0.42), 
+    file_score('4816.jpg.txt', 0.38
+    )] .
+
+?- similarity_search('C:\\Users\\benem\\Downloads\\queries\\queryImages\\q10.jpg.txt', SimilarList).
+SimilarList = [
+    file_score('2976.jpg.txt', 0.74), 
+    file_score('2971.jpg.txt', 0.66), 
+    file_score('2194.jpg.txt', 0.64), 
+    file_score('4118.jpg.txt', 0.63), 
+    file_score('2972.jpg.txt', 0.62
+    )] .
+
+?- similarity_search('C:\\Users\\benem\\Downloads\\queries\\queryImages\\q11.jpg.txt', SimilarList).
+SimilarList = [
+    file_score('3017.jpg.txt', 0.61), 
+    file_score('3660.jpg.txt', 0.58), 
+    file_score('2411.jpg.txt', 0.57), 
+    file_score('1010.jpg.txt', 0.56), 
+    file_score('2067.jpg.txt', 0.55
+    )] .
+
+?- similarity_search('C:\\Users\\benem\\Downloads\\queries\\queryImages\\q12.jpg.txt', SimilarList).
+SimilarList = [
+    file_score('3135.jpg.txt', 1.0),
+    file_score('3133.jpg.txt', 0.64),
+    file_score('2447.jpg.txt', 0.57),
+    file_score('4429.jpg.txt', 0.54),
+    file_score('2964.jpg.txt', 0.51)
+    ] .
+
+?- similarity_search('C:\\Users\\benem\\Downloads\\queries\\queryImages\\q13.jpg.txt', SimilarList).
+SimilarList = [
+    file_score('3225.jpg.txt', 1.0), 
+    file_score('2607.jpg.txt', 0.47), 
+    file_score('2078.jpg.txt', 0.49), 
+    file_score('1060.jpg.txt', 0.46), 
+    file_score('2079.jpg.txt', 0.45)
+    ] .
+
+?- similarity_search('C:\\Users\\benem\\Downloads\\queries\\queryImages\\q14.jpg.txt', SimilarList).
+SimilarList = [
+    file_score('2193.jpg.txt', 0.45), 
+    file_score('3108.jpg.txt', 0.38), 
+    file_score('3085.jpg.txt', 0.37), 
+    file_score('1994.jpg.txt', 0.36), 
+    file_score('1142.jpg.txt', 0.35
+    )] .
+
+?- similarity_search('C:\\Users\\benem\\Downloads\\queries\\queryImages\\q15.jpg.txt', SimilarList).
+SimilarList = [
+    file_score('4756.jpg.txt', 0.74), 
+    file_score('2462.jpg.txt', 0.72), 
+    file_score('3756.jpg.txt', 0.7), 
+    file_score('2555.jpg.txt', 0.69), 
+    file_score('1127.jpg.txt', 0.68)
+    ] 
